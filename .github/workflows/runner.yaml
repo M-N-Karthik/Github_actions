@@ -1,0 +1,22 @@
+name: runner
+on: push
+jobs:
+    ubuntu_runner:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo runner
+              run: |
+                echo "Runner: ${{ runner.os }} runner."
+    windows_runner:
+        runs-on: windows-latest
+        steps:
+            - name: Echo runner
+              shell: bash
+              run: |
+                echo "Runner: ${{ runner.os }} runner."
+    macos_runner:
+        runs-on: macos-latest
+        steps:
+            - name: Echo runner
+              run: |
+                echo "Runner: ${{ runner.os }} runner."
