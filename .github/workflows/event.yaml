@@ -1,11 +1,16 @@
 name: events
-on: push
-jobs:
-    echo:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Echo event
-              run: echo "Event:${{ github.event_name }}"
-        
 
-          
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo event
+        run: |
+          echo "Event: ${{ github.event_name }} event."
