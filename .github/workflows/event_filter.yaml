@@ -1,0 +1,14 @@
+name: event_filter
+on:
+    pull_request:
+        types: 
+            - opened
+            - synchronize
+        branches:
+           - main
+jobs:
+    echo:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo event
+              run: "runs when the pr is raised"

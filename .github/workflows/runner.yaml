@@ -1,5 +1,5 @@
 name: runner
-on: push
+on: workflow_dispatch
 jobs:
     ubuntu_runner:
         runs-on: ubuntu-latest
