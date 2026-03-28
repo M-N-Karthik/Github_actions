@@ -16,4 +16,7 @@ jobs:
                 echo "SHA: ${{ github.sha }}"
                 echo "Run ID: ${{ github.run_id }}"
                 echo "Run Number: ${{ github.run_number }}"
+            - name: Echo environment variables
+              run: |
+                echo "variable-file: ${{vars.MY_VAR}}"
 
