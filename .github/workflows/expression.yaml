@@ -1,0 +1,29 @@
+name: expression
+on:
+    push:
+    workflow_dispatch:
+        inputs:
+            debug:
+                type: boolean
+                default: false
+jobs:
+    expression:
+        runs-on: ubuntu-latest
+        steps:
+            - name: '[debug] Echo expression'
+              if: ${{ inputs.debug }}
+              run: |
+                echo "triggered by:${{ github.event_name }}"
+                echo "sha: ${{ github.sha }}"
+                echo "ref: ${{ github.ref }}"
+                echo "workflow: ${{ github.workflow }}"
+                echo "actor: ${{ github.actor }}"   
+            - name: '[debug] happend from main'
+              if: ${{ inputs.debug && github.ref == 'refs/heads/main' }}
+              run: echo "happened from main branch"
+            - name: Greetings
+              run: echo "Hello, world!"
+
+
+
+            

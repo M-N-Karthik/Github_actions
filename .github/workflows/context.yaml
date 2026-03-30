@@ -1,6 +1,6 @@
 name: context
 on:
-   - push
+   #- push
    - workflow_dispatch
 env:
     MY_ENV: "worlflow"
