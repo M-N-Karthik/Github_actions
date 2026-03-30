@@ -27,11 +27,11 @@ jobs:
                 echo "variable-file: ${{vars.MY_VAR}}"
             - name: MY_VARS
               run: |
-                echo "MY_VAR: ${{vars.MY_VAR}}"
-                echo "MY_OVERWRITTEN_VAR: ${{vars.MY_OVERWRITTEN_VAR}}"
+                echo "MY_VAR: ${{env.MY_VAR}}"
+                echo "MY_OVERWRITTEN_VAR: ${{env.MY_OVERWRITTEN_VAR}}"
             - name: retrieving_variables
               run: |
-                echo "MY_VAR: ${{vars.MY_VAR}}"
-                echo "MY_OVERWRITTEN_VAR: ${{vars.MY_OVERWRITTEN_VAR}}"
+                echo "MY_VAR: ${{env.MY_VAR}}"
+                echo "MY_OVERWRITTEN_VAR: ${{env.MY_OVERWRITTEN_VAR}}"
 
 
