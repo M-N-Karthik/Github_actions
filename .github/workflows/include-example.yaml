@@ -18,9 +18,12 @@ jobs:
                       opacity: 100
                     - color: red
                       shape: triangle 
+                    - colour: green
+                      shape: circle
+                      size: medium
                 exclude:
-                    - color: red
-                      opacity: 75
+                    - color: green
+                      shape: circle
         steps:
             - name: Dummy step
               run: echo "This is a dummy step for ${{ matrix.color }} - ${{ matrix.size }} - ${{ matrix.shape }} - ${{ matrix.opacity }}"
