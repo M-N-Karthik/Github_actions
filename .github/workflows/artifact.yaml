@@ -13,6 +13,8 @@ on:
               type: boolean
               default: true
               description: "Whether to use cache or not"
+env:
+  app-key: app-${{ github.sha}}
 
 jobs:
     test-build:
@@ -44,7 +46,7 @@ jobs:
             - name: Upload artifact
               uses: actions/upload-artifact@v4
               with:
-                name: app
+                name: ${{ env.app-key }}
                 path: artifact/react-app/build  
     deploy:
         runs-on: ubuntu-latest
