@@ -14,9 +14,9 @@ jobs:
                 include:
                     - node: 22.x
                       os: ubuntu-latest
-                    - name: 21.x
+                    - node: 21.x
                       os: ubuntu-latest
-                      tage: "experimental"
+                      tag: "experimental"
         steps:
             - name: checkout code
               uses: actions/checkout@v4    
@@ -25,7 +25,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node }}
             - name: Experimental step
-              if: matrix.tage == 'experimental'
+              if: ${{matrix.tag == 'experimental'}}
               run: exit 1
             - name: Runing sime tests
               run: |
