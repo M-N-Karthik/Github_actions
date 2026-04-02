@@ -3,7 +3,7 @@ on: workflow_dispatch
 jobs:
     include-outputs:
         runs-on: ubuntu-latest
-        name: ${{ matrix.color }} - ${{ matrix.size }} - ${{ matrix.shape }}
+        name: ${{ matrix.color }} - ${{ matrix.size }} - ${{ matrix.shape }} - ${{ matrix.opacity }}
         strategy:
             fail-fast: false
             matrix:
