@@ -1,0 +1,19 @@
+name: environment
+run-name: environment || ${{ inputs.env-type }}
+on: 
+  workflow_dispatch:
+    inputs:
+        env-type:
+            type: environment
+            default: staging
+jobs:
+    echo:
+        runs-on: ubuntu-latest
+        environment: ${{ inputs.env-type }}
+        env:
+          env-val: "${{ vars.MY_ENV_VAR }}-environment"
+        steps:
+            - name: Echo environment
+              run: echo "Environment- ${{ env.env-val }}"
+
+    
