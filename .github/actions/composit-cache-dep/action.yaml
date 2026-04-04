@@ -1,0 +1,29 @@
+name: composite-action
+description: A composite action to cache dependencies for a React app
+inputs:
+  node-version:
+    description: "Node.js version to use"
+    required: true
+    default: "20.x"
+  working-directory:
+    description: "Working directory for the action"
+    required: false
+    default: .
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+    - name: Cache node modules
+      uses: actions/cache@v3
+      id: cache
+      with:
+        path: ${{ inputs.working-directory }}/node_modules
+        key: cache-${{ hashFiles(format('{0}/package-lock.json', inputs.working-directory)) }}
+    - name: Install dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: npm install
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
