@@ -1,5 +1,16 @@
 name: action-yaml
-on: workflow_dispatch
+run-name: action yaml - ${{inputs.target_environment}}
+on: 
+  workflow_dispatch:
+    inputs:
+      target_environment:
+        description: 'Target environment for deployment'
+        type: choice
+        options:
+            - dev
+            - prod
+        
+
 env:
     working_dir: ./action-react/react-app
 jobs:
@@ -12,6 +23,7 @@ jobs:
               with:
                 node-version: '20.x'
                 working-directory: ${{ env.working_dir }}
+                target-environment: ${{ inputs.target_environment }}
             - name: test
               run: npm test
               working-directory: ${{ env.working_dir }}
