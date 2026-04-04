@@ -25,7 +25,7 @@ runs:
       id: cache
       with:
         path: ${{ inputs.working-directory }}/node_modules
-        key: cache-${{ hashFiles(format('{0}/package-lock.json', inputs.working-directory)) }}
+        key: cache-${{ inputs.target-environment }}-${{ hashFiles(format('{0}/package-lock.json', inputs.working-directory)) }}
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: ${{ inputs.target-environment == 'dev' && 'npm ci' || 'npm ci --omit=dev' }}
