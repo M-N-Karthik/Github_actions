@@ -1,0 +1,10 @@
+name: js-actions
+on: workflow_dispatch
+jobs:
+    js-dependency:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            - name: Run js action dependency
+              uses: ./.github/actions/js-action-dependency

@@ -1,0 +1,2 @@
+node_modules
+!.github/actions/js-action-dependency/node_modules

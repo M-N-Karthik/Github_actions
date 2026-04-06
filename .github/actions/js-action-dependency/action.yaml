@@ -1,0 +1,5 @@
+name: js-action-dependency
+description: checks if there is npm update and raises the pr with the update the package.json files.
+runs:
+  using: "node16"
+  main: "index.js"
