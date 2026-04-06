@@ -4,9 +4,12 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN echo "rebuild"
+RUN ls -l
+RUN cat requirements.txt
+
 RUN python --version
 RUN python -m pip install --no-cache-dir -r requirements.txt
 
 COPY main.py .
-CMD ["python", "/app/main.py"]
+
+CMD ["python", "main.py"]
