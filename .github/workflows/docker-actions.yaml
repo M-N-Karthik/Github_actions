@@ -5,7 +5,19 @@ on:
         url:
             description: 'URL to ping'
             required: true
-            default: 'https://www.google.com'
+            type: choice
+            options:
+                - https://www.google.com
+                - https://www.invalid-hjj.com
+                - karthik.com
+        max-retries:
+          description: Maximum number of retries before exiting
+          default: '10'
+          required: false
+        delay:
+          description: Delay in seconds between retries
+          default: '5'
+          required: false
 jobs:
   ping-url:
     runs-on: ubuntu-latest
@@ -16,4 +28,6 @@ jobs:
         uses: ./.github/actions/docker-ping-url
         with:
           url: ${{ inputs.url }}
+          max-retries: ${{ inputs.max-retries }}
+          delay: ${{ inputs.delay }}
           
