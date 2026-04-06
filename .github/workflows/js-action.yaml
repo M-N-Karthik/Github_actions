@@ -1,5 +1,19 @@
 name: js-actions
-on: workflow_dispatch
+run-name: js-actions | BB - ${{ inputs.base-branch }} TB - ${{ inputs.target-branch }} WD - ${{ inputs.working-dir }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      base-branch:
+        type: string
+        default: main
+      target-branch:
+        type: string
+        default: update-dependencies
+      working-dir:
+        type: string
+        default: 17-custom-actions/react-app
+
 jobs:
     js-dependency:
         runs-on: ubuntu-latest
@@ -8,3 +22,7 @@ jobs:
               uses: actions/checkout@v4
             - name: Run js action dependency
               uses: ./.github/actions/js-action-dependency
+              with:
+                base-branch: ${{ inputs.base-branch }}
+                target-branch: ${{ inputs.target-branch }}
+                working-directory: ${{ inputs.working-dir }}
