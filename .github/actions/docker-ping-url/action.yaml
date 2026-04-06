@@ -1,0 +1,18 @@
+name: docker-ping-url
+description: A GitHub Action to ping a URL using Docker and exits when it reaches max retries.
+inputs:
+  url:
+    description: The URL to ping
+    required: true
+  max-retries:
+    description: Maximum number of retries before exiting
+    default: '10'
+    required: false
+  delay:
+    description: Delay in seconds between retries
+    default: '5'
+    required: false
+runs:
+  using: "docker"
+  image: "Dockerfile"   
+  
