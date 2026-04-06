@@ -1,0 +1,19 @@
+name: docker-actions
+on: 
+  workflow_dispatch:
+    inputs:
+        url:
+            description: 'URL to ping'
+            required: true
+            default: 'https://www.google.com'
+jobs:
+  ping-url:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Ping URL using Docker
+        uses: ./.github/actions/docker-ping-url
+        with:
+          url: ${{ inputs.url }}
+          
