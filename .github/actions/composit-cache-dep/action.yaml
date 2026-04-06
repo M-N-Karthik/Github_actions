@@ -13,6 +13,11 @@ inputs:
     description: "Target environment for deployment"
     required: false
     default: dev
+
+outputs:
+  cachekey:
+    description: "Cache hit key for the dependencies"
+    value: ${{ steps.cache.outputs.cache-hit != 'true'}}
 runs:
   using: "composite"
   steps:

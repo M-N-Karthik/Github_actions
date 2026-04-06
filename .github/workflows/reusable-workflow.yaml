@@ -1,0 +1,33 @@
+name: resuable-workflow
+on:
+  workflow_call:
+    inputs:
+      target_directory:
+        type: string
+        required: true
+    outputs:
+      build_status:
+          description: "The status of the build process"
+          value: ${{ jobs.deploy.outputs.build_status }}
+      url:
+          description: "The URL of the deployed application"
+          value: ${{ jobs.deploy.outputs.url }}
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        outputs:
+            build_status: ${{ steps.deploy.outputs.build_status }}
+            url: ${{ steps.deploy.outputs.url }}
+        steps:
+            - name: checkout repository
+              uses: actions/checkout@v3
+            - name: Build
+              id: build
+              run: |
+                echo "Building application in ${{ inputs.target_directory }}"
+                echo "build_status=success" >> "$GITHUB_OUTPUT"
+            - name: Deploy
+              id: deploy
+              run: |
+                echo "Deploying application from ${{ inputs.target_directory }}"
+                echo "url=https://www.google.com" >> "$GITHUB_OUTPUT"
