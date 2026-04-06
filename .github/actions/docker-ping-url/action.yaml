@@ -14,5 +14,7 @@ inputs:
     required: false
 runs:
   using: "docker"
-  image: "Dockerfile"   
+  image: "Dockerfile"
+  args:
+    - --no-cache 
   
