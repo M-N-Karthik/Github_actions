@@ -8,6 +8,7 @@ jobs:
       target_directory: dummy-directory
 
   e2e-tests:
+    needs: call-reusable-workflow
     uses: M-N-Karthik/GIthub_action_cyprus_E2E/.github/workflows/e2e-tests.yaml@main
     secrets:
       CYPRESS_RECORD_KEY: ${{ secrets.GH_TOKEN }}
