@@ -9,7 +9,7 @@ jobs:
 
   e2e-tests:
     needs: call-reusable-workflow
-    uses: M-N-Karthik/GIthub_action_cyprus_E2E/.github/workflows/e2e-tests.yaml@main
+    uses: M-N-Karthik/GIthub_action_cyprus_E2E/.github/workflows/e2e.yaml@main
     secrets:
       CYPRESS_RECORD_KEY: ${{ secrets.GH_TOKEN }}
   printing-build-status:
