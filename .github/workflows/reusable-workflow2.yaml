@@ -6,6 +6,11 @@ jobs:
     uses: ./.github/workflows/reusable-workflow.yaml
     with:
       target_directory: dummy-directory
+
+  e2e-tests:
+    uses: M-N-Karthik/GIthub_action_cyprus_E2E/.github/workflows/e2e-tests.yaml@main
+    secrets:
+      CYPRESS_RECORD_KEY: ${{ secrets.GH_TOKEN }}
   printing-build-status:
     runs-on: ubuntu-latest
     needs: call-reusable-workflow
