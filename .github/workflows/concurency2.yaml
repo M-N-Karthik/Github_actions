@@ -1,0 +1,30 @@
+name: Managing concurrency 2
+on : 
+    workflow_dispatch:
+
+jobs:
+    ping-with-concurrency:
+        concurrency:
+            group: ${{ github.workflow }}-${{ github.ref }}
+            cancel-in-progress: true
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v3
+            - name: Ping URL with concurrency
+              uses: ./.github/actions/docker-ping-url
+              with:
+                url: https://www.google.com
+                max-retries: 10
+                delay: 5
+    ping-without-concurrency:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v3
+            - name: Ping URL without concurrency
+              uses: ./.github/actions/docker-ping-url
+              with:
+                url: https://www.google.com
+                max-retries: 10
+                delay: 5
